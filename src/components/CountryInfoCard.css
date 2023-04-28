@@ -1,0 +1,64 @@
+.CountryInfoCard {
+  height: 80%;
+  aspect-ratio: 2 / 3;
+  outline: 2px solid teal;
+  border-radius: 2rem;
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+  z-index: 130000;
+  background-color: teal;
+}
+
+.coat-o-arms {
+  width: 4rem;
+}
+
+.country__flag {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  max-width: 100%;
+  aspect-ratio: 3 / 2;
+  /* max-height: 40%; */
+  border-top-right-radius: 2rem;
+  border-top-left-radius: 2rem;
+}
+
+.country__name {
+  text-align: center;
+  color: white;
+}
+
+.country__facts {
+  padding: 0 1.5rem 0 2.5rem;
+}
+
+.country__neighbour-flag {
+  height: 1.25rem;
+  margin: 6px 7px;
+  cursor: pointer;
+  border-radius: 4px;
+  transform: translateY(0.4rem);
+}
+
+.country__neighbour {
+  position: relative;
+}
+
+.hover {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.2s;
+  cursor: pointer;
+  color: white;
+}
+
+.country__neighbour:hover .hover {
+  opacity: 1;
+  transition: opacity 0.2s;
+}
