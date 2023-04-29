@@ -1,22 +1,20 @@
 import "./CountryInfoCard.css";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { CountryContext } from "../contexts/CountryContext";
+import { NewCountryContext } from "../contexts/NewCountryContext";
 import { DateTime } from "luxon";
+import { latLng } from "leaflet";
+import { useMap } from "react-leaflet";
 
 export default function CountryInfoCard() {
-  // console.log("card mounted");
-  // const regionNamesInEnglish = new Intl.DisplayNames(["en"], {
-  //   type: "region",
-  // });
+  const map = useMap();
+
   const { countryInfo, neighbours, setCountryName } =
     useContext(CountryContext);
   const country = countryInfo[0];
-  // const [neighboursComponent, setNeighboursComponent] = useState([]);
 
-  // useEffect(() => {
-  //   if (!neighbours) return;
-  //   setNeighboursComponent(neighbours);
-  // }, [neighbours]);
+  const { isNewCountry, setIsNewCountry, setLatLng } =
+    useContext(NewCountryContext);
 
   if (!country) return <h1>Not found</h1>;
   if (Object.keys(country).length === 0) return <h1>Not found</h1>;
@@ -31,16 +29,28 @@ export default function CountryInfoCard() {
       : `${femaleCitizens}s and ${maleCitizens}s`;
   const driveSide = country.car.side === "right" ? "🛣🚗" : "🚗🛣";
   const giniInd = country.gini[Object.keys(country.gini).at(-1)];
-  console.log(countryInfo);
+  // console.log(countryInfo);
   // Time
-  const timezone = +country.timezones[0].split("+" || "-")[1]?.split(":")[0];
-  console.log(timezone);
+  const timezone = +country.timezones[0]?.split("+" || "-")[1]?.split(":")[0];
   const time = DateTime.local().setZone(
-    Number.isFinite(timezone) ? `UTC+${timezone}` : "UTC"
+    Number.isFinite(timezone) ? `UTC+${timezone + 1}` : "UTC"
   );
-  console.log(time.toISOTime());
+  const timeArr = time.toISOTime().split(":");
+  const displayTime = `${timeArr[0]}:${timeArr[1]}`;
 
+  // console.log(country.capitalInfo.latlng);
   // console.log(neighbours.map((item) => item.flags.svg));
+
+  const handleCountryClick = (neigbour) => {
+    setCountryName(neigbour?.name.common);
+    if (!isNewCountry) setIsNewCountry(true);
+    setLatLng(neigbour.capitalInfo.latlng);
+    map.panTo([
+      neigbour.capitalInfo.latlng[0] - 0.08,
+      neigbour.capitalInfo.latlng[1] + 0.16,
+    ]);
+    // [lat - 0.08, lng + 0.16]
+  };
 
   return (
     <div className="CountryInfoCard">
@@ -56,7 +66,7 @@ export default function CountryInfoCard() {
         </li>
         <li>Driving Side: {driveSide}</li>
         <li>Gini Index: {giniInd} (1-100 - the lower the more equality)</li>
-        {/* <li>Local Time: {time}</li> */}
+        <li>Local Time: {displayTime}</li>
         <li>
           Neighbours: <br />
           {neighbours.length === 0
@@ -65,7 +75,7 @@ export default function CountryInfoCard() {
                 <span
                   className="country__neighbour"
                   key={neigbour?.flags.svg}
-                  onClick={() => setCountryName(neigbour?.name.common)}
+                  onClick={() => handleCountryClick(neigbour)}
                 >
                   <img
                     className="country__neighbour-flag"
