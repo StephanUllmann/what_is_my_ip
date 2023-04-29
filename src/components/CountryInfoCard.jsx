@@ -1,9 +1,8 @@
 import "./CountryInfoCard.css";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { CountryContext } from "../contexts/CountryContext";
 import { NewCountryContext } from "../contexts/NewCountryContext";
 import { DateTime } from "luxon";
-import { latLng } from "leaflet";
 import { useMap } from "react-leaflet";
 
 export default function CountryInfoCard() {
@@ -46,7 +45,7 @@ export default function CountryInfoCard() {
     if (!isNewCountry) setIsNewCountry(true);
     setLatLng(neigbour.capitalInfo.latlng);
     map.panTo([
-      neigbour.capitalInfo.latlng[0] - 0.08,
+      neigbour.capitalInfo.latlng[0] - 0.05,
       neigbour.capitalInfo.latlng[1] + 0.16,
     ]);
     // [lat - 0.08, lng + 0.16]

@@ -1,7 +1,7 @@
 import { createContext } from "react";
 import { useState, useEffect } from "react";
 import data from "./ip_data.json";
-import getIP from "../clients/getIP";
+// import getIP from "../clients/getIP";
 
 export const IpContext = createContext();
 
