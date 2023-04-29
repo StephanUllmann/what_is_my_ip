@@ -5,6 +5,7 @@ import App from "./App";
 import IpContextProvider from "./contexts/IpContext";
 import NewCountryContextProvider from "./contexts/NewCountryContext";
 import CountryContextProvider from "./contexts/CountryContext";
+import "@fontsource/nunito";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

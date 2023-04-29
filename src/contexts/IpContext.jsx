@@ -16,6 +16,5 @@ export default function IpContextProvider({ children }) {
     setIpData(data);
   }, []);
 
-  // console.log(ipData);
   return <IpContext.Provider value={{ ipData }}>{children}</IpContext.Provider>;
 }

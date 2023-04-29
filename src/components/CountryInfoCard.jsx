@@ -37,18 +37,14 @@ export default function CountryInfoCard() {
   const timeArr = time.toISOTime().split(":");
   const displayTime = `${timeArr[0]}:${timeArr[1]}`;
 
-  // console.log(country.capitalInfo.latlng);
-  // console.log(neighbours.map((item) => item.flags.svg));
-
   const handleCountryClick = (neigbour) => {
     setCountryName(neigbour?.name.common);
     if (!isNewCountry) setIsNewCountry(true);
     setLatLng(neigbour.capitalInfo.latlng);
     map.panTo([
-      neigbour.capitalInfo.latlng[0] - 0.05,
-      neigbour.capitalInfo.latlng[1] + 0.16,
+      neigbour.capitalInfo.latlng[0] - 0.17,
+      neigbour.capitalInfo.latlng[1] + 0.5,
     ]);
-    // [lat - 0.08, lng + 0.16]
   };
 
   return (
@@ -61,10 +57,10 @@ export default function CountryInfoCard() {
       <h1 className="country__name">{officialName}</h1>
       <ul className="country__facts">
         <li>
-          Home of {population}mio {people}.
+          Home of {population}mio {people}
         </li>
         <li>Driving Side: {driveSide}</li>
-        <li>Gini Index: {giniInd} (1-100 - the lower the more equality)</li>
+        <li>Gini Index: {giniInd} (the lower the more equality)</li>
         <li>Local Time: {displayTime}</li>
         <li>
           Neighbours: <br />

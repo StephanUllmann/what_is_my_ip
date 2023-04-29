@@ -2,7 +2,9 @@
   margin: 0 auto;
   height: 40rem;
   aspect-ratio: 3 / 2;
-  border: 2px solid teal;
+  outline: 2px solid hsl(355deg 65% 48%);
+
   border-radius: 2rem;
   position: relative;
+  box-shadow: var(--shadow-elevation-medium);
 }

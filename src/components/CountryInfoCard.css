@@ -1,17 +1,22 @@
 .CountryInfoCard {
   height: 80%;
   aspect-ratio: 2 / 3;
-  outline: 2px solid teal;
+  outline: 2px solid hsl(355deg 65% 48%);
   border-radius: 2rem;
   position: absolute;
   right: 2rem;
   top: 2rem;
   z-index: 130000;
-  background-color: teal;
-}
-
-.coat-o-arms {
-  width: 4rem;
+  /* background-color: teal; */
+  box-shadow: var(--shadow-elevation-high);
+  background-image: linear-gradient(
+    10deg,
+    hsl(355deg 65% 48%) 0%,
+    hsl(34deg 81% 47%) 71%,
+    hsl(34deg 79% 49%) 87%,
+    hsl(34deg 79% 50%) 100%
+  );
+  cursor: default;
 }
 
 .country__flag {
@@ -20,27 +25,35 @@
   left: 0;
   right: 0;
   max-width: 100%;
-  /* aspect-ratio: 3 / 2; */
-  /* max-height: 40%; */
   border-top-right-radius: 2rem;
   border-top-left-radius: 2rem;
+  box-shadow: var(--shadow-elevation-low);
 }
 
 .country__name {
   text-align: center;
   color: white;
+  font-family: "Nunito";
 }
 
 .country__facts {
   padding: 0 1.5rem 0 2.5rem;
+  font-size: 0.8rem;
+  color: #eee;
+  font-family: "Nunito";
+}
+
+.country__facts li {
+  list-style-type: circle;
 }
 
 .country__neighbour-flag {
   height: 1.25rem;
-  margin: 6px 7px;
+  margin: 8px 7px;
   cursor: pointer;
   border-radius: 4px;
   transform: translateY(0.4rem);
+  box-shadow: var(--shadow-elevation-low);
 }
 
 .country__neighbour {
@@ -50,12 +63,17 @@
 .hover {
   position: absolute;
   left: 50%;
-  top: 0;
+  top: 0.6rem;
   transform: translateX(-50%);
   opacity: 0;
   transition: opacity 0.2s;
   cursor: pointer;
   color: white;
+  padding: 0 0.3rem;
+  background-color: hsla(240, 100%, 20%, 0.297);
+  border-radius: 0.5rem;
+  line-height: 0.1rem;
+  margin: 0;
 }
 
 .country__neighbour:hover .hover {

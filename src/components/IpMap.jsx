@@ -25,16 +25,13 @@ export default function IpMap() {
   const [lat, setLat] = useState(ipData.location.lat);
   const [lng, setLng] = useState(ipData.location.lng);
 
-  // let lat = ipData.location.lat;
-  // let lng = ipData.location.lng;
   useEffect(() => {
     if (isNewCountry) {
       setLat(latLng[0]);
       setLng(latLng[1]);
     }
   }, [latLng, isNewCountry]);
-  const center = [lat - 0.08, lng + 0.16];
-  // ChangeMap(center);
+  const center = [lat - 0.17, lng + 0.5];
 
   return (
     <MapContainer
