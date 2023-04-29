@@ -24,4 +24,3 @@ yarn-error.log*
 .env
 
 ip_data2.json
-ip_data.json

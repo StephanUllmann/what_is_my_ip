@@ -1,0 +1,21 @@
+{
+  "ip": "80.187.86.220",
+  "location": {
+    "country": "DE",
+    "region": "Land Berlin",
+    "city": "Berlin",
+    "lat": 52.52437,
+    "lng": 13.41053,
+    "postalCode": "10967",
+    "timezone": "+02:00",
+    "geonameId": 2950159
+  },
+  "as": {
+    "asn": 44178,
+    "name": "TMD-Core-AS",
+    "route": "80.187.80.0/20",
+    "domain": "",
+    "type": ""
+  },
+  "isp": "Telekom Deutschland GmbH"
+}
