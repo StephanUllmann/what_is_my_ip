@@ -30,7 +30,6 @@ export default function CountryContextProvider({ children }) {
   }, [countryName]);
 
   const borders = countryInfo[0]?.borders || [];
-  // console.log(borders);
   useEffect(() => {
     if (borders.length === 0) return;
     borders.forEach((element) => {
@@ -40,7 +39,6 @@ export default function CountryContextProvider({ children }) {
     });
   }, [borders]);
 
-  // console.log(neighbours);
   return (
     <CountryContext.Provider
       value={{ countryInfo, neighbours, setCountryName }}
