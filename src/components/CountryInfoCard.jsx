@@ -27,13 +27,23 @@ export default function CountryInfoCard() {
       ? femaleCitizens
       : `${femaleCitizens}s and ${maleCitizens}s`;
   const driveSide = country.car.side === "right" ? "🛣🚗" : "🚗🛣";
-  const giniInd = country.gini[Object.keys(country.gini).at(-1)];
+  const giniInd = country?.gini[Object.keys(country?.gini).at(-1)];
   // console.log(countryInfo);
   // Time
+
   const timezone = +country.timezones[0]?.split("+" || "-")[1]?.split(":")[0];
-  const time = DateTime.local().setZone(
-    Number.isFinite(timezone) ? `UTC+${timezone + 1}` : "UTC"
-  );
+  let time;
+  if (country.timezones[0].includes("+")) {
+    time = DateTime.local().setZone(
+      Number.isFinite(timezone) ? `UTC+${timezone + 1}` : "UTC"
+    );
+  } else if (country.timezones[0].includes("+")) {
+    time = DateTime.local().setZone(
+      Number.isFinite(timezone) ? `UTC-${timezone + 1}` : "UTC"
+    );
+  } else {
+    time = DateTime.local().setZone("UTC+1");
+  }
   const timeArr = time.toISOTime().split(":");
   const displayTime = `${timeArr[0]}:${timeArr[1]}`;
 
