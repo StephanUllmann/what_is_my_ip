@@ -1,5 +1,5 @@
 :root {
-  --shadow-color: 0deg 0% 0%;
+  --shadow-color: 240deg 100% 20%;
   --shadow-elevation-low: 0.2px 0.6px 0.7px hsl(var(--shadow-color) / 0.13),
     0.3px 1.1px 1.3px -1.2px hsl(var(--shadow-color) / 0.13),
     0.9px 2.9px 3.4px -2.5px hsl(var(--shadow-color) / 0.13);
@@ -12,9 +12,9 @@
     2.5px 8.4px 9.9px -0.7px hsl(var(--shadow-color) / 0.12),
     4.2px 13.9px 16.3px -1.1px hsl(var(--shadow-color) / 0.12),
     6.7px 22.2px 26.1px -1.4px hsl(var(--shadow-color) / 0.12),
-    10.5px 34.8px 40.9px -1.8px hsl(var(--shadow-color) / 0.12),
-    15.9px 53px 62.3px -2.1px hsl(var(--shadow-color) / 0.12),
-    23.5px 78.2px 91.9px -2.5px hsl(var(--shadow-color) / 0.12);
+    10.5px 34.8px 40.9px -1.8px hsl(var(--shadow-color) / 0.12);
+  /* 15.9px 53px 62.3px -2.1px hsl(var(--shadow-color) / 0.12),
+    23.5px 78.2px 91.9px -2.5px hsl(var(--shadow-color) / 0.12); */
 }
 
 body {
@@ -32,4 +32,5 @@ body {
   display: grid;
   place-content: center;
   font-family: "Nunito";
+  overflow: hidden;
 }
