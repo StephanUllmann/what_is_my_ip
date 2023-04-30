@@ -8,7 +8,14 @@ function App() {
   const { ipData } = useContext(IpContext);
 
   return (
-    <div className="App">{Object.keys(ipData).length > 0 && <IpMap />}</div>
+    <div className="App">
+      {Object.keys(ipData).length > 0 && (
+        <>
+          <IpMap />
+          <h4>Your IP-Address: {ipData.ip}</h4>
+        </>
+      )}
+    </div>
   );
 }
 

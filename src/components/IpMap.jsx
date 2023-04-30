@@ -45,11 +45,11 @@ export default function IpMap() {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <Marker key={`${lat}${lng}`} position={[lat, lng]}>
-        <Popup>
-          <p>IP: {ipData.ip}</p>
-          <p>Country: {regionNamesInEnglish.of(ipData.location.country)}</p>
-          <p>City: {ipData.location.city}</p>
-        </Popup>
+          {/* <Popup>
+            <p>IP: {ipData.ip}</p>
+            <p>Country: {regionNamesInEnglish.of(ipData.location.country)}</p>
+            <p>City: {ipData.location.city}</p>
+          </Popup> */}
       </Marker>
       {Object.keys(countryInfo).length > 0 && <CountryInfoCard />}
     </MapContainer>

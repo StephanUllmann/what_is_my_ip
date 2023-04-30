@@ -3,8 +3,23 @@
   height: 40rem;
   aspect-ratio: 3 / 2;
   outline: 2px solid hsl(355deg 65% 48%);
-
+  position: relative;
   border-radius: 2rem;
   position: relative;
   box-shadow: var(--shadow-elevation-medium);
+}
+
+.leaflet-container::before {
+  inset: 2rem;
+  content: "";
+  outline: 4rem solid hsla(240, 100%, 20%, 0.15);
+  position: absolute;
+  z-index: 765;
+  border-radius: 2rem;
+}
+
+h4 {
+  color: #eee;
+  text-align: right;
+  line-height: 0;
 }

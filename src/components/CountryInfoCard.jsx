@@ -27,13 +27,25 @@ export default function CountryInfoCard() {
       ? femaleCitizens
       : `${femaleCitizens}s and ${maleCitizens}s`;
   const driveSide = country.car.side === "right" ? "🛣🚗" : "🚗🛣";
-  const giniInd = country.gini[Object.keys(country.gini).at(-1)];
-  // console.log(countryInfo);
+  const giniInd = country.gini
+    ? country?.gini[Object.keys(country?.gini).at(-1)]
+    : null;
+
   // Time
+
   const timezone = +country.timezones[0]?.split("+" || "-")[1]?.split(":")[0];
-  const time = DateTime.local().setZone(
-    Number.isFinite(timezone) ? `UTC+${timezone + 1}` : "UTC"
-  );
+  let time;
+  if (country.timezones[0].includes("+")) {
+    time = DateTime.local().setZone(
+      Number.isFinite(timezone) ? `UTC+${timezone + 1}` : "UTC"
+    );
+  } else if (country.timezones[0].includes("+")) {
+    time = DateTime.local().setZone(
+      Number.isFinite(timezone) ? `UTC-${timezone + 1}` : "UTC"
+    );
+  } else {
+    time = DateTime.local().setZone("UTC+1");
+  }
   const timeArr = time.toISOTime().split(":");
   const displayTime = `${timeArr[0]}:${timeArr[1]}`;
 
@@ -56,11 +68,11 @@ export default function CountryInfoCard() {
       />
       <h1 className="country__name">{officialName}</h1>
       <ul className="country__facts">
-        <li>
-          Home of {population}mio {people}
-        </li>
+        <li>Home of {population}mio people</li>
         <li>Driving Side: {driveSide}</li>
-        <li>Gini Index: {giniInd} (the lower the more equality)</li>
+        {giniInd && (
+          <li>Gini Index: {giniInd} (the lower the more equality)</li>
+        )}
         <li>Local Time: {displayTime}</li>
         <li>
           Neighbours: <br />
