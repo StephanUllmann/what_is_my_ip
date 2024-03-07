@@ -1,7 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { IpContext } from './IpContext';
 import getCountryInfo from '../clients/getCountryInfo';
-import getCountryByCode from '../clients/getCountryByCode';
 
 export const CountryContext = createContext();
 
